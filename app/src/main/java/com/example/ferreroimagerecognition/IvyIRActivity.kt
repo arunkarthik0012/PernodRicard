@@ -79,8 +79,7 @@ class IvyIRActivity : AppCompatActivity() {
 
         if (allPermissionsGranted()) {
 
-            handleSuccessResponseForSOS(result)
-//            startCamera()
+            startCamera()
         } else {
             ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
