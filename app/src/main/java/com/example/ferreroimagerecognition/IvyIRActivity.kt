@@ -544,6 +544,22 @@ class IvyIRActivity : AppCompatActivity() {
 
 
                         //Parse compliance SOS here
+//                        if (detailsObj.has("sos")) {
+//                            var sosObj = detailsObj.getJSONObject("sos")
+//                            if (sosObj != null) {
+//                                if (sosObj.has("number")) {
+//                                    //sosObj.getInt("number")
+//
+//                                }
+//                                if (sosObj.has("length")) {
+//                                    // sosObj.getInt("length")
+//
+//
+//                                }
+//
+//                            }
+//                        }
+
                         if (detailsObj.has("sos")) {
                             val productsArray: JSONArray = detailsObj.getJSONArray("sos")
                             for (index in 0..productsArray.length() - 1) {
@@ -557,7 +573,6 @@ class IvyIRActivity : AppCompatActivity() {
 
 
                         }
-
 
                         //Parse Price check here
                         if (detailsObj.has("price_check")) {
