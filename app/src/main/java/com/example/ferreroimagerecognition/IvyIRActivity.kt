@@ -545,19 +545,17 @@ class IvyIRActivity : AppCompatActivity() {
 
                         //Parse compliance SOS here
                         if (detailsObj.has("sos")) {
-                            var sosObj = detailsObj.getJSONObject("sos")
-                            if (sosObj != null) {
-                                if (sosObj.has("number")) {
-                                    //sosObj.getInt("number")
-
+                            val productsArray: JSONArray = detailsObj.getJSONArray("sos")
+                            for (index in 0..productsArray.length() - 1) {
+                                val sosObj = productsArray.getJSONObject(index)
+                                if (sosObj!!.has("id")) {
+                                    Log.d("IRActivity", sosObj.getString("id")) // join with in Pcode
                                 }
-                                if (sosObj.has("length")) {
-                                    // sosObj.getInt("length")
-
-
-                                }
+                                storevisionhelper.updateBrandSOS(sosObj)
 
                             }
+
+
                         }
 
 
