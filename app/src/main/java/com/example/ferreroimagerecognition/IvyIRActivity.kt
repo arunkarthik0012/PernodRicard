@@ -78,6 +78,46 @@ class IvyIRActivity : AppCompatActivity() {
 
         if (allPermissionsGranted()) {
 
+        /*    var  json:String= """{
+    "details": [
+        {
+            "tag": "",
+            "compliance": {
+                "score": "22",
+                "message": ""
+            },
+            "price_check": {
+                "id": "",
+                "message": ""
+            },
+            "products": [{"id":"fr","count":"2"},{"id":"kjp","count":"1"},{"id":"ttr","count":"1"},{"id":"npb","count":"1"}],
+            "sos": [
+                {
+                    "id": "fr",
+                    "number": "45",
+                    "length": ""
+                },{
+                    "id": "mr",
+                    "number": "45",
+                    "length": ""
+                }
+            ]
+        }
+    ],
+    "message": "success",
+    "status_code": 200
+}"""
+
+            try {
+                val obj:JSONObject = JSONObject(json)
+                handleSuccessResponseForSOS(obj)
+//                handleSuccessResponse(obj)
+
+                Log.d("My App", obj.toString())
+            } catch (t: Throwable) {
+                Log.e("My App", "Could not parse malformed JSON: \"$json\"")
+            }*/
+
             startCamera()
         } else {
             ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
@@ -327,7 +367,6 @@ class IvyIRActivity : AppCompatActivity() {
                                     if (sosObj!!.has("id")) {
                                         Log.d("IRActivity", sosObj.getString("id")) // join with in Pcode
                                     }
-                                    storevisionhelper.updateBrandSOS(sosObj)
 
                                 }
 

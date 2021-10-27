@@ -139,8 +139,8 @@ public class StoreVisionHelper {
         try {
             db.openDataBase();
                 db.updateSQL("Update smartvisionProductMaster set length='" + jsonObject.get("number") + "'"+" WHERE pCode ="+"'"+jsonObject.get("id").toString()+"'"+" AND parentid ==0");
-                db.updateSQL("UPDATE SmartVisionProductMaster set SosTarget=(SELECT(svp.length-svp.SosTarget) FROM SmartVision sv LEFT JOIN SmartVisionProductMaster svp where pCode ="+"'"+jsonObject.get("id").toString()+"'"+" AND parentid ==0)");
-                db.updateSQL("Update SmartVisionProductMaster set AcctualTarget=(SELECT (sv.Opportunities-svp.SosTarget)From SmartVision sv LEFT JOIN SmartVisionProductMaster svp where pCode ="+"'"+jsonObject.get("id").toString()+"'"+" AND parentid ==0)");
+                db.updateSQL("UPDATE SmartVisionProductMaster set SosTarget=(SELECT(svp.length-svp.SosTarget) FROM SmartVision sv LEFT JOIN SmartVisionProductMaster svp where svp.pCode ="+"'"+jsonObject.get("id").toString()+"'"+" AND svp.parentid ==0) "+" where pCode ="+"'"+jsonObject.get("id").toString()+"'"+" AND parentid ==0");
+                db.updateSQL("Update SmartVisionProductMaster set AcctualTarget=(SELECT (sv.Opportunities-svp.SosTarget)From SmartVision sv LEFT JOIN SmartVisionProductMaster svp where svp.pCode ="+"'"+jsonObject.get("id").toString()+"'"+" AND svp.parentid ==0)"+" where pCode="+"'"+jsonObject.get("id").toString()+"'"+" AND parentid ==0");
             db.closeDB();
 
         }catch (Exception e) {
@@ -153,7 +153,7 @@ public class StoreVisionHelper {
         ArrayList<StoreVisionBo> smartcategorylist=new ArrayList<>();
         try {
             db.openDataBase();
-            String sql="select DISTINCT category,svp.SOsTarget,opportunities ,svp.AcctualTarget from SmartVision LEFT JOIN SmartVisionProductMaster svp where ParentID='0'";
+            String sql="select category,svp.SOsTarget,opportunities ,svp.AcctualTarget from SmartVision LEFT JOIN SmartVisionProductMaster svp where ParentID='0' AND pCode='fr'";
             Cursor c = db.selectSQL(sql);
             Log.d("Store Vision Helper",c.getCount()+"");
             while (c.moveToNext()){

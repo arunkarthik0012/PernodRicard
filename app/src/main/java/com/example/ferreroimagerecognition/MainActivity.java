@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(mviewPager);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
 //        toolbar.setTitle("Store Vision");
         if (getSupportActionBar() != null) {
