@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new SmartshelfFragment(),"SmartShelf");
         viewPager.setAdapter(adapter);
     }
+
+
     @Override
     protected void onDestroy() {
 

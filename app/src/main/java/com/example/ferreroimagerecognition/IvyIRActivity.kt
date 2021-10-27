@@ -78,7 +78,9 @@ class IvyIRActivity : AppCompatActivity() {
         currentClickedImageView = view as ImageButton?
 
         if (allPermissionsGranted()) {
-            startCamera()
+
+            handleSuccessResponseForSOS(result)
+//            startCamera()
         } else {
             ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
@@ -302,21 +304,34 @@ class IvyIRActivity : AppCompatActivity() {
                             }
 
                             //Parse compliance SOS here
-                            if (detailsObj.has("sos")) {
-                                var sosObj = detailsObj.getJSONObject("sos")
-                                if (sosObj != null) {
-                                    if (sosObj.has("number")) {
-                                        //sosObj.getInt("number")
+//                            if (detailsObj.has("sos")) {
+//                                var sosObj = detailsObj.getJSONObject("sos")
+//                                if (sosObj != null) {
+//                                    if (sosObj.has("number")) {
+//                                        //sosObj.getInt("number")
+//
+//                                    }
+//                                    if (sosObj.has("length")) {
+//                                        // sosObj.getInt("length")
+//
+//                                    }
+//
+//                                }
+//                            }
 
-                                    }
-                                    if (sosObj.has("length")) {
-                                        // sosObj.getInt("length")
-
-                                    }
-
+                        if (detailsObj.has("sos")) {
+                            val productsArray: JSONArray = detailsObj.getJSONArray("sos")
+                            for (index in 0..productsArray.length() - 1) {
+                                val sosObj = productsArray.getJSONObject(index)
+                                if (sosObj!!.has("id")) {
+                                    Log.d("IRActivity", sosObj.getString("id")) // join with in Pcode
                                 }
+                                storevisionhelper.updateBrandSOS(sosObj)
+
                             }
 
+
+                        }
 
                             //Parse Price check here
                             if (detailsObj.has("price_check")) {
