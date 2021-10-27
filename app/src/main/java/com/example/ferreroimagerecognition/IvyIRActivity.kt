@@ -25,8 +25,7 @@ import java.security.AccessController.getContext
 
 class IvyIRActivity : AppCompatActivity() {
 
-    lateinit var storevisionhelper:StoreVisionHelper
-
+    lateinit var storevisionhelper: StoreVisionHelper
 
 
     companion object {
@@ -37,9 +36,9 @@ class IvyIRActivity : AppCompatActivity() {
 
         private const val REQUEST_CODE_PERMISSIONS = 20
         private val REQUIRED_PERMISSIONS = arrayOf(
-            Manifest.permission.CAMERA,
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
+                Manifest.permission.CAMERA,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
         )
 
     }
@@ -48,7 +47,7 @@ class IvyIRActivity : AppCompatActivity() {
     var centerImageURI: String? = null
     var photoImageMap = mutableMapOf<Int, String?>()
     var rootGridLayout: GridLayout? = null
-    lateinit var progressDialog:ProgressDialog
+    lateinit var progressDialog: ProgressDialog
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,7 +63,7 @@ class IvyIRActivity : AppCompatActivity() {
             Log.d("IVYIRActivity", "message {$message} -->{$isSuccess}")
         }
 
-        progressDialog= ProgressDialog(this)
+        progressDialog = ProgressDialog(this)
         progressDialog.setContentView(R.layout.progress_dailog)
 
 
@@ -85,8 +84,9 @@ class IvyIRActivity : AppCompatActivity() {
         }
 
     }
+
     fun startCamera() {
-        var params =  JSONObject();
+        var params = JSONObject();
         params.put("aspect_ratio", "horizontal") //string “vertical” for featuretype Price Check, remaining
         params.put("shouldShowReviewScreen", true); // boolean
         params.put("shouldSetPadding", true); // boolean
@@ -105,7 +105,7 @@ class IvyIRActivity : AppCompatActivity() {
         }, params);
     }
 
-    fun uploadFile(responseJson: JSONObject?){
+    fun uploadFile(responseJson: JSONObject?) {
         val params = JSONObject()
         val header = JSONObject()
         params.put("app_id", "ivy_ferrero") //string
@@ -131,9 +131,9 @@ class IvyIRActivity : AppCompatActivity() {
         if (responseJson!!.has("imageUri")) {
             val sukshiNetworkHelper = SukshiNetworkHelper(applicationContext)
             sukshiNetworkHelper.makeApiCallforFileupload(
-                responseJson?.getString("imageUri"),
-                params,
-                header
+                    responseJson?.getString("imageUri"),
+                    params,
+                    header
             ) { error, result ->
                 if (error == null) {
                     //Handle result
@@ -150,7 +150,8 @@ class IvyIRActivity : AppCompatActivity() {
         }
 
     }
-    fun uploadFileForSOS(responseJson: JSONObject?){
+
+    fun uploadFileForSOS(responseJson: JSONObject?) {
         val params = JSONObject()
         val header = JSONObject()
         params.put("app_id", "ivy_ferrero") //string
@@ -176,18 +177,18 @@ class IvyIRActivity : AppCompatActivity() {
         if (responseJson!!.has("imageUri")) {
             val sukshiNetworkHelper = SukshiNetworkHelper(applicationContext)
             sukshiNetworkHelper.makeApiCallforFileupload(
-                responseJson?.getString("imageUri"),
-                params,
-                header
+                    responseJson?.getString("imageUri"),
+                    params,
+                    header
             ) { error, result ->
                 if (error == null) {
                     //Handle result
-                    Log.d("Suucess", "uploadFileForSOS: "+result)
+                    Log.d("Suucess", "uploadFileForSOS: " + result)
                     handleSuccessResponseForSOS(result)
                     uploadFileForCompliance(responseJson)
                     //hide dailog loading
                     progressDialog.dismiss()
-                    val intent = Intent(this,MainActivity::class.java)
+                    val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     Log.d("IRActivity", "Success:" + result.toString())
 
@@ -200,7 +201,7 @@ class IvyIRActivity : AppCompatActivity() {
 
     }
 
-    fun uploadFileForCompliance(responseJson: JSONObject?){
+    fun uploadFileForCompliance(responseJson: JSONObject?) {
         val params = JSONObject()
         val header = JSONObject()
         params.put("app_id", "ivy_ferrero") //string
@@ -226,16 +227,16 @@ class IvyIRActivity : AppCompatActivity() {
         if (responseJson!!.has("imageUri")) {
             val sukshiNetworkHelper = SukshiNetworkHelper(applicationContext)
             sukshiNetworkHelper.makeApiCallforFileupload(
-                responseJson?.getString("imageUri"),
-                params,
-                header
+                    responseJson?.getString("imageUri"),
+                    params,
+                    header
             ) { error, result ->
                 if (error == null) {
                     //Handle result
                     handleSuccessResponseForCompliance(result)
                     //hide dailog loading
                     progressDialog.dismiss()
-                    val intent = Intent(this,MainActivity::class.java)
+                    val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     Log.d("IRActivity", "Success:" + result.toString())
 
@@ -249,8 +250,8 @@ class IvyIRActivity : AppCompatActivity() {
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int, permissions: Array<String>, grantResults:
-        IntArray
+            requestCode: Int, permissions: Array<String>, grantResults:
+            IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
@@ -262,47 +263,47 @@ class IvyIRActivity : AppCompatActivity() {
                 // present a toast to notify the user that
                 // the permissions were not granted.
                 Toast.makeText(
-                    this, "Permissions not granted by the user.",
-                    Toast.LENGTH_SHORT
+                        this, "Permissions not granted by the user.",
+                        Toast.LENGTH_SHORT
                 ).show()
                 finish()
             }
         }
     }
 
-    fun handleSuccessResponse(responseJson: JSONObject?)  {
-        if (responseJson!!.has("status_code")){
+    fun handleSuccessResponse(responseJson: JSONObject?) {
+        if (responseJson!!.has("status_code")) {
             var response_code = responseJson!!.getInt("status_code")
-            if (response_code == 200){
+            if (response_code == 200) {
                 //Parse the remaining data here
-                if (responseJson!!.has("details")){
+                if (responseJson!!.has("details")) {
                     var detailsArray: JSONArray = responseJson!!.getJSONArray("details")
 
                     if (detailsArray.length() > 0) {
 //                        for (index in 0..detailsArray.length()-1) {
-                            var detailsObj = detailsArray.getJSONObject(0)
+                        var detailsObj = detailsArray.getJSONObject(0)
 
-                            if (detailsObj.has("tag")) {
-                                //detailsObj.getString("tag")
-                            }
+                        if (detailsObj.has("tag")) {
+                            //detailsObj.getString("tag")
+                        }
 
-                            //Parse compliance Object here
-                            if (detailsObj.has("compliance")) {
-                                var compilanceObj = detailsObj.getJSONObject("compliance")
-                                if (compilanceObj != null) {
-                                    if (compilanceObj.has("score")) {
-                                        //compilanceObj.getInt("score")
-
-                                    }
-                                    if (compilanceObj.has("message")) {
-                                        compilanceObj.getString("message")
-
-                                    }
+                        //Parse compliance Object here
+                        if (detailsObj.has("compliance")) {
+                            var compilanceObj = detailsObj.getJSONObject("compliance")
+                            if (compilanceObj != null) {
+                                if (compilanceObj.has("score")) {
+                                    //compilanceObj.getInt("score")
 
                                 }
-                            }
+                                if (compilanceObj.has("message")) {
+                                    compilanceObj.getString("message")
 
-                            //Parse compliance SOS here
+                                }
+
+                            }
+                        }
+
+                        //Parse compliance SOS here
 //                            if (detailsObj.has("sos")) {
 //                                var sosObj = detailsObj.getJSONObject("sos")
 //                                if (sosObj != null) {
@@ -318,61 +319,65 @@ class IvyIRActivity : AppCompatActivity() {
 //                                }
 //                            }
 
-                        if (detailsObj.has("sos")) {
-                            val productsArray: JSONArray = detailsObj.getJSONArray("sos")
-                            for (index in 0..productsArray.length() - 1) {
-                                val sosObj = productsArray.getJSONObject(index)
-                                if (sosObj!!.has("id")) {
-                                    Log.d("IRActivity", sosObj.getString("id")) // join with in Pcode
-                                }
-                                storevisionhelper.updateBrandSOS(sosObj)
+                        try {
+                            if (detailsObj.has("sos")) {
+                                val productsArray: JSONArray = detailsObj.getJSONArray("sos")
+                                for (index in 0..productsArray.length() - 1) {
+                                    val sosObj = productsArray.getJSONObject(index)
+                                    if (sosObj!!.has("id")) {
+                                        Log.d("IRActivity", sosObj.getString("id")) // join with in Pcode
+                                    }
+                                    storevisionhelper.updateBrandSOS(sosObj)
 
+                                }
+
+
+                            }
+
+                        }catch (e:Exception){
+
+                        }
+                        //Parse Price check here
+                        if (detailsObj.has("price_check")) {
+                            var price_checkObj = detailsObj.getJSONObject("price_check")
+                            if (price_checkObj != null) {
+                                if (price_checkObj.has("id")) {
+                                    Log.d("IRActivity", price_checkObj.getString("id"))
+
+                                }
+                                if (price_checkObj.has("message")) {
+                                    Log.d("IRActivity", price_checkObj.getString("message"))
+
+                                }
+
+                            }
+                        }
+
+                        //Parse products here
+                        if (detailsObj.has("products")) {
+                            var productsArray: JSONArray =
+                                    detailsObj.getJSONArray("products")
+                            for (index in 0..productsArray.length() - 1) {
+                                var productObj = productsArray.getJSONObject(index)
+                                if (productObj!!.has("id")) {
+                                    Log.d(
+                                            "IRActivity",
+                                            productObj.getString("id")
+                                    ) // join with in Pcode
+                                }
+                                if (productObj!!.has("count")) {
+                                    if (productObj.get("count") is Int)
+                                        Log.d(
+                                                "IRActivity",
+                                                productObj.getInt("count").toString()
+                                        ) // join with in Pcode
+
+                                    storevisionhelper.UpdateOosFacing(productObj)
+                                }
                             }
 
 
                         }
-
-                            //Parse Price check here
-                            if (detailsObj.has("price_check")) {
-                                var price_checkObj = detailsObj.getJSONObject("price_check")
-                                if (price_checkObj != null) {
-                                    if (price_checkObj.has("id")) {
-                                        Log.d("IRActivity", price_checkObj.getString("id"))
-
-                                    }
-                                    if (price_checkObj.has("message")) {
-                                        Log.d("IRActivity", price_checkObj.getString("message"))
-
-                                    }
-
-                                }
-                            }
-
-                            //Parse products here
-                            if (detailsObj.has("products")) {
-                                var productsArray: JSONArray =
-                                    detailsObj.getJSONArray("products")
-                                for (index in 0..productsArray.length() - 1) {
-                                    var productObj = productsArray.getJSONObject(index)
-                                    if (productObj!!.has("id")) {
-                                        Log.d(
-                                            "IRActivity",
-                                            productObj.getString("id")
-                                        ) // join with in Pcode
-                                    }
-                                    if (productObj!!.has("count")) {
-                                        if (productObj.get("count") is Int)
-                                            Log.d(
-                                                "IRActivity",
-                                                productObj.getInt("count").toString()
-                                            ) // join with in Pcode
-
-                                        storevisionhelper.UpdateOosFacing(productObj)
-                                    }
-                                }
-
-
-                            }
 //                        }
                     }
 
@@ -380,48 +385,47 @@ class IvyIRActivity : AppCompatActivity() {
                 }
             }
 //            storevisionhelper.loadSkuSmartVision()
-        }else {
+        } else {
             Log.d("IRActivity", "Response Error")
         }
-
 
 
     }
 
 
-    fun handleSuccessResponseForSOS(responseJson: JSONObject?)  {
-        if (responseJson!!.has("status_code")){
+    fun handleSuccessResponseForSOS(responseJson: JSONObject?) {
+        if (responseJson!!.has("status_code")) {
             var response_code = responseJson!!.getInt("status_code")
-            if (response_code == 200){
+            if (response_code == 200) {
                 //Parse the remaining data here
-                if (responseJson!!.has("details")){
+                if (responseJson!!.has("details")) {
                     var detailsArray: JSONArray = responseJson!!.getJSONArray("details")
                     if (detailsArray.length() > 0) {
 //                        for(index in 0..detailsArray.length()-1) {
-                            var detailsObj = detailsArray.getJSONObject(0)
+                        var detailsObj = detailsArray.getJSONObject(0)
 
-                            if (detailsObj.has("tag")) {
-                                //detailsObj.getString("tag")
-                            }
+                        if (detailsObj.has("tag")) {
+                            //detailsObj.getString("tag")
+                        }
 
-                            //Parse compliance Object here
-                            if (detailsObj.has("compliance")) {
-                                var compilanceObj = detailsObj.getJSONObject("compliance")
-                                if (compilanceObj != null) {
-                                    if (compilanceObj.has("score")) {
-                                        //compilanceObj.getInt("score")
-
-                                    }
-                                    if (compilanceObj.has("message")) {
-                                        compilanceObj.getString("message")
-
-                                    }
+                        //Parse compliance Object here
+                        if (detailsObj.has("compliance")) {
+                            var compilanceObj = detailsObj.getJSONObject("compliance")
+                            if (compilanceObj != null) {
+                                if (compilanceObj.has("score")) {
+                                    //compilanceObj.getInt("score")
 
                                 }
+                                if (compilanceObj.has("message")) {
+                                    compilanceObj.getString("message")
+
+                                }
+
                             }
+                        }
 
 
-                            //Parse compliance SOS here
+                        //Parse compliance SOS here
 //                            if (detailsObj.has("sos")) {
 //                                var sosObj = detailsObj.getJSONObject("sos")
 //                                if (sosObj != null) {
@@ -439,60 +443,64 @@ class IvyIRActivity : AppCompatActivity() {
 //                            }
 
 
-                        if (detailsObj.has("sos")) {
-                            val productsArray: JSONArray = detailsObj.getJSONArray("sos")
-                            for (index in 0..productsArray.length() - 1) {
-                                val sosObj = productsArray.getJSONObject(index)
-                                if (sosObj!!.has("id")) {
-                                    Log.d("IRActivity", sosObj.getString("id")) // join with in Pcode
-                                }
-                                storevisionhelper.updateBrandSOS(sosObj)
+                        try {
+                            if (detailsObj.has("sos")) {
+                                val productsArray: JSONArray = detailsObj.getJSONArray("sos")
+                                for (index in 0..productsArray.length() - 1) {
+                                    val sosObj = productsArray.getJSONObject(index)
+                                    if (sosObj!!.has("id")) {
+                                        Log.d("IRActivity", sosObj.getString("id")) // join with in Pcode
+                                    }
+                                    storevisionhelper.updateBrandSOS(sosObj)
 
+                                }
+
+
+                            }
+
+                        }catch (e:Exception){
+
+                        }
+
+                        //Parse Price check here
+                        if (detailsObj.has("price_check")) {
+                            var price_checkObj = detailsObj.getJSONObject("price_check")
+                            if (price_checkObj != null) {
+                                if (price_checkObj.has("id")) {
+                                    Log.d("IRActivity", price_checkObj.getString("id"))
+
+                                }
+                                if (price_checkObj.has("message")) {
+                                    Log.d("IRActivity", price_checkObj.getString("message"))
+
+                                }
+
+                            }
+                        }
+
+                        //Parse products here
+                        if (detailsObj.has("products")) {
+                            var productsArray: JSONArray =
+                                    detailsObj.getJSONArray("products")
+                            for (index in 0..productsArray.length() - 1) {
+                                var productObj = productsArray.getJSONObject(index)
+                                if (productObj!!.has("id")) {
+                                    Log.d(
+                                            "IRActivity",
+                                            productObj.getString("id")
+                                    ) // join with in Pcode
+                                }
+                                if (productObj!!.has("count")) {
+                                    if (productObj.get("count") is Int)
+                                        Log.d(
+                                                "IRActivity",
+                                                productObj.getInt("count").toString()
+                                        ) // join with in Pcode
+                                }
                             }
 
 
                         }
-
-
-                        //Parse Price check here
-                            if (detailsObj.has("price_check")) {
-                                var price_checkObj = detailsObj.getJSONObject("price_check")
-                                if (price_checkObj != null) {
-                                    if (price_checkObj.has("id")) {
-                                        Log.d("IRActivity", price_checkObj.getString("id"))
-
-                                    }
-                                    if (price_checkObj.has("message")) {
-                                        Log.d("IRActivity", price_checkObj.getString("message"))
-
-                                    }
-
-                                }
-                            }
-
-                            //Parse products here
-                            if (detailsObj.has("products")) {
-                                var productsArray: JSONArray =
-                                    detailsObj.getJSONArray("products")
-                                for (index in 0..productsArray.length() - 1) {
-                                    var productObj = productsArray.getJSONObject(index)
-                                    if (productObj!!.has("id")) {
-                                        Log.d(
-                                            "IRActivity",
-                                            productObj.getString("id")
-                                        ) // join with in Pcode
-                                    }
-                                    if (productObj!!.has("count")) {
-                                        if (productObj.get("count") is Int)
-                                            Log.d(
-                                                "IRActivity",
-                                                productObj.getInt("count").toString()
-                                            ) // join with in Pcode
-                                    }
-                                }
-
-
-                            }
 //                        }
                     }
 
@@ -500,21 +508,20 @@ class IvyIRActivity : AppCompatActivity() {
                 }
             }
 //            storevisionhelper.loadSkuSmartVision()
-        }else {
+        } else {
             Log.d("IRActivity", "Response Error")
         }
-
 
 
     }
 
 
-    fun handleSuccessResponseForCompliance(responseJson: JSONObject?)  {
-        if (responseJson!!.has("status_code")){
+    fun handleSuccessResponseForCompliance(responseJson: JSONObject?) {
+        if (responseJson!!.has("status_code")) {
             var response_code = responseJson!!.getInt("status_code")
-            if (response_code == 200){
+            if (response_code == 200) {
                 //Parse the remaining data here
-                if (responseJson!!.has("details")){
+                if (responseJson!!.has("details")) {
                     var detailsArray: JSONArray = responseJson!!.getJSONArray("details")
                     if (detailsArray.length() > 0) {
 //                        for(index in 0..detailsArray.length()-1) {
@@ -559,20 +566,24 @@ class IvyIRActivity : AppCompatActivity() {
 //                            }
 //                        }
 
-                        if (detailsObj.has("sos")) {
-                            val productsArray: JSONArray = detailsObj.getJSONArray("sos")
-                            for (index in 0..productsArray.length() - 1) {
-                                val sosObj = productsArray.getJSONObject(index)
-                                if (sosObj!!.has("id")) {
-                                    Log.d("IRActivity", sosObj.getString("id")) // join with in Pcode
+                        try {
+                            if (detailsObj.has("sos")) {
+                                val productsArray: JSONArray = detailsObj.getJSONArray("sos")
+                                for (index in 0..productsArray.length() - 1) {
+                                    val sosObj = productsArray.getJSONObject(index)
+                                    if (sosObj!!.has("id")) {
+                                        Log.d("IRActivity", sosObj.getString("id")) // join with in Pcode
+                                    }
+                                    storevisionhelper.updateBrandSOS(sosObj)
+
                                 }
-                                storevisionhelper.updateBrandSOS(sosObj)
+
 
                             }
 
+                        } catch (e: Exception) {
 
                         }
-
                         //Parse Price check here
                         if (detailsObj.has("price_check")) {
                             var price_checkObj = detailsObj.getJSONObject("price_check")
@@ -592,20 +603,20 @@ class IvyIRActivity : AppCompatActivity() {
                         //Parse products here
                         if (detailsObj.has("products")) {
                             var productsArray: JSONArray =
-                                detailsObj.getJSONArray("products")
+                                    detailsObj.getJSONArray("products")
                             for (index in 0..productsArray.length() - 1) {
                                 var productObj = productsArray.getJSONObject(index)
                                 if (productObj!!.has("id")) {
                                     Log.d(
-                                        "IRActivity",
-                                        productObj.getString("id")
+                                            "IRActivity",
+                                            productObj.getString("id")
                                     ) // join with in Pcode
                                 }
                                 if (productObj!!.has("count")) {
                                     if (productObj.get("count") is Int)
                                         Log.d(
-                                            "IRActivity",
-                                            productObj.getInt("count").toString()
+                                                "IRActivity",
+                                                productObj.getInt("count").toString()
                                         ) // join with in Pcode
                                 }
                             }
@@ -619,16 +630,12 @@ class IvyIRActivity : AppCompatActivity() {
                 }
             }
 //            storevisionhelper.loadSkuSmartVision()
-        }else {
+        } else {
             Log.d("IRActivity", "Response Error")
         }
 
 
-
     }
-
-
-
 
 
     fun enableDisableImageButtons() {
