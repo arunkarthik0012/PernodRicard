@@ -94,7 +94,7 @@ public class StoreVisionHelper {
         try {
             db.openDataBase();
             for (int i=0;i<jsonObject.length();i++) {
-                db.updateSQL("UPDATE SmartVisionProductMaster SET count= '" + jsonObject.get("count") + "'"+" WHERE pCode = '" + jsonObject.get("id").toString() + "'");
+                db.updateSQL("UPDATE SmartVisionProductMaster SET count= '" + jsonObject.get("count") + "'"+" WHERE pCode = '" + jsonObject.get("id").toString() + "'" +" AND parentid != 0" );
                 db.updateSQL("UPDATE SmartVision set outofstock=(SELECT sum(svp.FacingTarget-svp.count) FROM SmartVisionProductMaster svp), nooffacing=(SELECT sum(svp.FacingTarget) FROM SmartVisionProductMaster svp)");
 
             }
@@ -138,9 +138,9 @@ public class StoreVisionHelper {
     public void updateBrandSOS(JSONObject jsonObject){
         try {
             db.openDataBase();
-                db.updateSQL("Update smartvisionProductMaster set length='" + jsonObject.get("number") + "'"+" WHERE pCode ="+"'"+jsonObject.get("id").toString()+"'");
-                db.updateSQL("UPDATE SmartVisionProductMaster set SosTarget=(SELECT(svp.length-svp.SosTarget) FROM SmartVision sv LEFT JOIN SmartVisionProductMaster svp) where pCode ="+"'"+jsonObject.get("id").toString()+"'");
-                db.updateSQL("Update SmartVisionProductMaster set AcctualTarget=(SELECT (sv.Opportunities-svp.SosTarget)From SmartVision sv LEFT JOIN SmartVisionProductMaster svp)where pCode ="+"'"+jsonObject.get("id").toString()+"'");
+                db.updateSQL("Update smartvisionProductMaster set length='" + jsonObject.get("number") + "'"+" WHERE pCode ="+"'"+jsonObject.get("id").toString()+"'"+" AND parentid ==0");
+                db.updateSQL("UPDATE SmartVisionProductMaster set SosTarget=(SELECT(svp.length-svp.SosTarget) FROM SmartVision sv LEFT JOIN SmartVisionProductMaster svp where pCode ="+"'"+jsonObject.get("id").toString()+"'"+" AND parentid ==0)");
+                db.updateSQL("Update SmartVisionProductMaster set AcctualTarget=(SELECT (sv.Opportunities-svp.SosTarget)From SmartVision sv LEFT JOIN SmartVisionProductMaster svp where pCode ="+"'"+jsonObject.get("id").toString()+"'"+" AND parentid ==0)");
             db.closeDB();
 
         }catch (Exception e) {
