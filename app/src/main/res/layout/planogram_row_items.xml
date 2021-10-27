@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="@dimen/sp20"
+    android:layout_marginRight="@dimen/sp20">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardMaxElevation="3dp"
+        >
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:padding="5sp"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:id="@+id/planogram_textview_1"
+                    />
+
+                <ImageView
+                    />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:gravity="center"
+                    android:padding="5sp"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:id="@+id/planogram_textview_2"
+
+                    />
+
+            </TableRow>
+        </TableLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

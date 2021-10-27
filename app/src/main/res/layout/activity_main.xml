@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/material_tool_bar" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@+id/toolbar"
+
+        android:id="@+id/relative_layout_1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Summary"
+            android:id="@+id/storesummary"
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="New Vision"
+            style="?attr/roundedCustomButtonNormal"
+            android:id="@+id/store_new_vision"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/ic_camera"
+            android:layout_marginLeft="200sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/storesummary"
+            android:text="Last visit date:22-10-21"
+            android:textSize="15sp"
+            />
+
+    </RelativeLayout>
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tabs"
+        app:tabIndicatorHeight="2sp"
+        app:tabIndicatorColor="@color/white"
+        app:tabMode="fixed"
+        android:background="@color/colorBlueripple_pressed"
+        android:layout_below="@+id/relative_layout_1"/>
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tabs"
+        android:layout_height="match_parent"
+        android:id="@+id/view_pager" />
+</RelativeLayout>

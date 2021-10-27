@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">FerreroImageRecognition</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="type_spinner">
+        <item>Shelf</item>
+        <item>POS</item>
+        <item>WareHouse</item>
+        <item>OfferZone</item>
+        <item>Display Corner</item>
+
+    </string-array>
+
+    <string-array name="category_spinner">
+        <item>Chocolate</item>
+
+    </string-array>
+</resources>

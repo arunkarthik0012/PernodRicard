@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".SmartshelfFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <!-- TODO: Update blank fragment layout -->
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        android:layout_marginTop="3sp"
+        android:id="@+id/cardview_smart_1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10sp"
+        app:cardBackgroundColor="@color/white"
+        app:cardMaxElevation="3dp">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Brand"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:padding="5sp"
+                    android:textColor="@color/black"
+                    />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="SOS%"
+                    android:gravity="center"
+                    android:padding="3sp"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+
+                    />
+                <TextView
+                    android:layout_width="100dp"
+                    android:padding="3sp"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:layout_height="wrap_content"
+                    android:text="Target%"
+                    android:textColor="@color/black"
+
+                    />
+                <TextView
+                    android:layout_width="70dp"
+                    android:padding="3sp"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="Gap%"
+                    android:textColor="@color/black"
+
+                    />
+
+            </TableRow>
+        </TableLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardview_smart_1"
+        android:id="@+id/smart_shelf_recylerview"
+        />
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        android:id="@+id/cardview_smart_2"
+        android:layout_marginTop="5sp"
+        android:layout_marginRight="10sp"
+        android:layout_marginLeft="10sp"
+        app:cardBackgroundColor="@color/white"
+        app:cardMaxElevation="3dp"
+        android:layout_below="@+id/smart_shelf_recylerview">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="category"
+                    android:layout_gravity=""
+                    android:textSize="15sp"
+                    android:padding="3sp"
+                    android:textColor="@color/black"
+
+                    />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="SOS%"
+                    android:textSize="15sp"
+                    android:padding="3sp"
+                    android:textColor="@color/black"
+                    />
+                <TextView
+                    android:layout_width="100dp"
+                    android:padding="3sp"
+                    android:textSize="15sp"
+                    android:layout_height="wrap_content"
+                    android:text="Target%"
+                    android:textColor="@color/black"
+                    />
+                <TextView
+                    android:layout_width="70dp"
+                    android:padding="3sp"
+                    android:layout_height="wrap_content"
+                    android:text="Gap%"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    />
+
+            </TableRow>
+        </TableLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/smart_shelf_recylerview1"
+        android:layout_below="@id/cardview_smart_2"
+        />
+        <androidx.cardview.widget.CardView
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
+            android:id="@+id/cardview_smart_3"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginLeft="10sp"
+            app:cardBackgroundColor="@color/white"
+            app:cardMaxElevation="3dp"
+            android:layout_below="@+id/smart_shelf_recylerview1">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TableRow>
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="Planogram"
+                        android:layout_gravity=""
+                        android:textSize="15sp"
+                        android:padding="3sp"
+                        android:textColor="@color/black"
+
+                        />
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="Adherence"
+                        android:textSize="15sp"
+                        android:padding="3sp"
+                        android:textColor="@color/black"
+                        />
+
+
+                </TableRow>
+            </TableLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/plano_shelf_recylerview"
+            android:layout_below="@id/cardview_smart_3"
+            />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Picture Quality"
+        android:id="@+id/picture"
+        android:layout_marginLeft="10sp"
+        android:textSize="18sp"
+        android:padding="5sp"
+        android:layout_marginTop="10sp"
+        android:layout_below="@+id/plano_shelf_recylerview"
+        android:textColor="@color/black"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linear_layout_1"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_below="@+id/picture">
+            <androidx.cardview.widget.CardView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:cardElevation="2dp"
+                android:layout_weight="1"
+                android:id="@+id/cardview_3"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/blue_bg"
+                app:cardMaxElevation="12dp"
+                app:cardPreventCornerOverlap="true"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:id="@+id/textview_1"
+                    android:layout_gravity="center"
+                    android:text="25"
+                    android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/textview_2"
+                    android:layout_marginTop="22sp"
+                    android:layout_below="@+id/textview_1"
+                    android:layout_gravity="center"
+                    android:text="Pending Upload"
+                    android:textColor="@color/white"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:cardElevation="2dp"
+                android:layout_weight="1"
+                android:id="@+id/cardview_4"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/blue_bg"
+                app:cardMaxElevation="12dp"
+                app:cardPreventCornerOverlap="true"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:id="@+id/textview_3"
+                    android:layout_gravity="center"
+                    android:text="10"
+                    android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/textview_4"
+                    android:layout_marginTop="25sp"
+                    android:layout_below="@+id/textview_3"
+                    android:layout_gravity="center"
+                    android:text="Picture Verified"
+                    android:textColor="@color/white"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="120dp"
+                android:layout_weight="1"
+                android:layout_height="120dp"
+                app:cardElevation="2dp"
+                android:id="@+id/cardview_5"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/blue_bg"
+                app:cardMaxElevation="12dp"
+                app:cardPreventCornerOverlap="true">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:id="@+id/textview_5"
+                    android:layout_gravity="center"
+                    android:text="5%"
+                    android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textview_6"
+
+                    android:layout_marginTop="25sp"
+                    android:layout_below="@+id/textview_5"
+                    android:layout_gravity="center"
+                    android:text="Bad Images"
+                    android:textColor="@color/white"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:text="Planogram"-->
+<!--            android:textSize="18sp"-->
+<!--            android:layout_marginLeft="10sp"-->
+<!--            android:layout_marginTop="5sp"-->
+<!--            android:padding="5sp"-->
+<!--            android:id="@+id/planogram"-->
+<!--            android:layout_below="@+id/linear_layout_1"/>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:weightSum="4"-->
+<!--            android:layout_margin="5sp"-->
+<!--            android:layout_below="@+id/planogram">-->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="120dp"-->
+<!--                android:layout_height="120dp"-->
+
+<!--                android:layout_weight="1"-->
+<!--                android:id="@+id/cardview_7"-->
+<!--                android:layout_margin="10dp"-->
+<!--                app:cardBackgroundColor="@color/blue_bg"-->
+<!--                app:cardMaxElevation="12dp"-->
+<!--                app:cardPreventCornerOverlap="true">-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:id="@+id/textview_7"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:text="25"-->
+<!--                    android:textColor="@color/white"/>-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+
+<!--                    android:id="@+id/textview_8"-->
+<!--                    android:layout_marginTop="25sp"-->
+<!--                    android:layout_below="@+id/textview_7"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:text="count"-->
+<!--                    android:textColor="@color/white"/>-->
+
+<!--            </androidx.cardview.widget.CardView>-->
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="120dp"-->
+<!--                android:layout_height="120dp"-->
+
+<!--                android:layout_weight="1"-->
+<!--                android:id="@+id/cardview_8"-->
+<!--                android:layout_margin="10dp"-->
+<!--                app:cardBackgroundColor="@color/blue_bg"-->
+<!--                app:cardMaxElevation="12dp"-->
+<!--                app:cardPreventCornerOverlap="true">-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:id="@+id/textview_10"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:text="10"-->
+<!--                    android:textColor="@color/white"/>-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+
+<!--                    android:id="@+id/textview_11"-->
+<!--                    android:layout_marginTop="25sp"-->
+<!--                    android:layout_below="@+id/textview_10"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:text="compliances"-->
+<!--                    android:textColor="@color/white"/>-->
+
+<!--            </androidx.cardview.widget.CardView>-->
+
+
+<!--        </LinearLayout>-->
+
+
+    </RelativeLayout>
+
+</ScrollView>

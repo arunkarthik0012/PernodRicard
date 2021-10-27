@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="primarycolor" format="color" />
+    <attr name="textColor" format="color" />
+
+    <declare-styleable name="MyCustomButton">
+        <attr name="roundedCustomButtonSmallGrey" format="reference" />
+        <attr name="roundedCustomButtonSmall" format="reference" />
+        <attr name="roundedCustomButtonSmallTransparent" format="reference" />
+        <attr name="roundedCustomButtonNormalGrey" format="reference" />
+        <attr name="roundedCustomButtonNormal" format="reference" />
+        <attr name="roundedCustomButtonNormalTransparent" format="reference" />
+        <attr name="roundedCustomDashboardButton" format="reference" />
+        <attr name="boxCustomButtonSmallGrey" format="reference" />
+        <attr name="roundedCustomButtonSmall_Configured" format="reference" />
+        <attr name="roundedCustomButtonNormal_Configured" format="reference" />
+        <attr name="fabButtonStyle_Configured" format="reference" />
+        <attr name="imageStyle_Configured" format="reference" />
+        <attr name="buttonStyle_Configured" format="reference" />
+    </declare-styleable>
+</resources>

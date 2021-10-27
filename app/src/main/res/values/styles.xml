@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ButtonNormalRoundCornerGreen_enabled" parent="@style/ButtonNormal">
+        <item name="android:background">@drawable/button_rounded_corner_green</item>
+        <item name="android:enabled">true</item>
+    </style>
+
+    <style name="ButtonNormal" parent="Base.Widget.AppCompat.Button">
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:minWidth">75dp</item>
+        <item name="android:fontFamily">@font/baloobhai_regular</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DialogAnimation_">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+    <!--    <style name="DialogAnimation.">-->
+<!--        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>-->
+<!--        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>-->
+<!--    </style>-->
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="Theme.FerreroImageRecognition" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorAccentRed</item>
+        <item name="colorPrimaryVariant">@color/colorAccentRed</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
+
+        <item name="roundedCustomButtonNormal">@style/ButtonNormalRoundCornerGreen_enabled</item>
+    </style>
+
+    <style name="MyToolbarBlue" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:background">?attr/primarycolor</item>
+        <!--For overflow icon -->
+        <item name="android:textColorSecondary">?attr/textColor</item>
+    </style>
+    <style name="BottomLayout" parent="@style/Widget.AppCompat.Spinner.DropDown">
+
+    </style>
+
+
+
+
+
+
+
+</resources>
