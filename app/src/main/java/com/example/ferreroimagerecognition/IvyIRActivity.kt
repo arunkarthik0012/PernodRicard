@@ -78,7 +78,7 @@ class IvyIRActivity : AppCompatActivity() {
 
         if (allPermissionsGranted()) {
 
-        /*    var  json:String= """{
+           /* var  json:String= """{
     "details": [
         {
             "tag": "",
@@ -90,7 +90,7 @@ class IvyIRActivity : AppCompatActivity() {
                 "id": "",
                 "message": ""
             },
-            "products": [{"id":"fr","count":"2"},{"id":"kjp","count":"1"},{"id":"ttr","count":"1"},{"id":"npb","count":"1"}],
+            "products": [{"id":"fr","count":"25"},{"id":"kjp","count":"1"},{"id":"ttr","count":"1"},{"id":"npb","count":"1"}],
             "sos": [
                 {
                     "id": "fr",
@@ -110,8 +110,8 @@ class IvyIRActivity : AppCompatActivity() {
 
             try {
                 val obj:JSONObject = JSONObject(json)
-                handleSuccessResponseForSOS(obj)
-//                handleSuccessResponse(obj)
+//                handleSuccessResponseForSOS(obj)
+                handleSuccessResponse(obj)
 
                 Log.d("My App", obj.toString())
             } catch (t: Throwable) {

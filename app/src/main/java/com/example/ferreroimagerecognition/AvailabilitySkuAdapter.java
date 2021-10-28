@@ -39,6 +39,7 @@ public class AvailabilitySkuAdapter extends RecyclerView.Adapter<AvailabilitySku
         viewHolder.textView2.setText(String.valueOf(storeVisionBolist.get(i).getNooffacing()));
         viewHolder.textView4.setText(String.valueOf(storeVisionBolist.get(i).getAvailability()));
         viewHolder.textView3.setText(String.valueOf(storeVisionBolist.get(i).getOutofstock()));
+        viewHolder.textView5.setText("\u20ac"+String.valueOf(storeVisionBolist.get(i).getOpportunity()*storeVisionBolist.get(i).getOutofstock()));
         Integer integer= Integer.parseInt(viewHolder.textView3.getText().toString());
         if (integer>0){
             viewHolder.textView3.setTextColor(ContextCompat.getColor(context,R.color.red_color));
@@ -58,13 +59,14 @@ public class AvailabilitySkuAdapter extends RecyclerView.Adapter<AvailabilitySku
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView1,textView2,textView3,textView4;
+        TextView textView1,textView2,textView3,textView4,textView5;
         public ViewHolder( View itemView) {
             super(itemView);
             textView1=itemView.findViewById(R.id.availability_textview_1);
             textView2=itemView.findViewById(R.id.availability_textview_2);
             textView3=itemView.findViewById(R.id.availability_textview_3);
             textView4=itemView.findViewById(R.id.availability_textview_4);
+            textView5=itemView.findViewById(R.id.availability_textview_5);
         }
     }
 }

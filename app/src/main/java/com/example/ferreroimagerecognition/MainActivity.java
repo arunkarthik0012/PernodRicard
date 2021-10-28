@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private StoreVisionHelper storeVisionHelper;
     ArrayList<StoreVisionBo> availlist2=new ArrayList<>();
     public  static int adherence=0;
+    public  static int sumOpportunity=0;
+    public  static int sumOos=0;
 
 
 
@@ -69,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
     }
     private void setupViewPager(ViewPager viewPager){
         SelectionPageAdapter adapter=new SelectionPageAdapter(getSupportFragmentManager());
-        adapter.addFragment(new AvailabilityFragment(),"Availability");
-        adapter.addFragment(new SmartshelfFragment(),"SmartShelf");
+        adapter.addFragment(new AvailabilityFragment(),"Facing Availability");
+        adapter.addFragment(new SmartshelfFragment(),"SHELF SHARE");
         viewPager.setAdapter(adapter);
     }
 

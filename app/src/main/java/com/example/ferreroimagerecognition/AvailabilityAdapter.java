@@ -16,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import static com.example.ferreroimagerecognition.MainActivity.sumOos;
+import static com.example.ferreroimagerecognition.MainActivity.sumOpportunity;
+
 public class AvailabilityAdapter extends RecyclerView.Adapter<AvailabilityAdapter.ViewHolder> {
 
     private final ArrayList<StoreVisionBo> storeVisionBolist;
@@ -39,8 +42,10 @@ public class AvailabilityAdapter extends RecyclerView.Adapter<AvailabilityAdapte
         holder.textView1.setText(storeVisionBolist.get(position).getCategory());
         holder.textView2.setText(String.valueOf(storeVisionBolist.get(position).getNooffacing()));
         holder.textView4.setText(String.valueOf(storeVisionBolist.get(position).getAvailability()));
-        holder.textView3.setText(String.valueOf(storeVisionBolist.get(position).getOutofstock()));
+        holder.textView3.setText(String.valueOf(sumOos));
+        holder.textView5.setText("\u20ac"+String.valueOf(sumOpportunity));
         Integer integer= Integer.parseInt(holder.textView3.getText().toString());
+
         if (integer>0){
             holder.textView3.setTextColor(ContextCompat.getColor(context,R.color.red_color));
         }
@@ -58,13 +63,14 @@ public class AvailabilityAdapter extends RecyclerView.Adapter<AvailabilityAdapte
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        TextView textView1,textView2,textView3,textView4;
+        TextView textView1,textView2,textView3,textView4,textView5;
         public ViewHolder(View itemview){
             super(itemview);
             textView1=itemView.findViewById(R.id.availability_textview_1);
             textView2=itemView.findViewById(R.id.availability_textview_2);
             textView3=itemView.findViewById(R.id.availability_textview_3);
             textView4=itemView.findViewById(R.id.availability_textview_4);
+            textView5=itemView.findViewById(R.id.availability_textview_5);
 
         }
 

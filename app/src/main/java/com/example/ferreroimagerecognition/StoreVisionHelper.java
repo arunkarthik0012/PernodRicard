@@ -12,6 +12,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import static com.example.ferreroimagerecognition.MainActivity.adherence;
+import static com.example.ferreroimagerecognition.MainActivity.sumOos;
+import static com.example.ferreroimagerecognition.MainActivity.sumOpportunity;
 
 public class StoreVisionHelper {
 
@@ -35,7 +37,7 @@ public class StoreVisionHelper {
         try {
             db.openDataBase();
 
-            String sql="select sv.category,sv.nooffacing, sum(svp.count) as Availabity, sv.OutofStock from smartvision sv LEFT JOIN SmartVisionProductMaster svp";
+            String sql="select sv.category,sum(svp.FacingTarget) as facing, sum(svp.count) as Availabity, sv.OutofStock,sum(svp.Opportunity) as oppprotunities from smartvision sv LEFT JOIN SmartVisionProductMaster svp WHERE svp.parentid = 18";
             Cursor c = db.selectSQL(sql);
             Log.d("Store Vision Helper",c.getCount()+"");
                 while (c.moveToNext()){
@@ -43,10 +45,11 @@ public class StoreVisionHelper {
                     storeVisionBo.setCategory(c.getString(0));
                     storeVisionBo.setNooffacing(c.getInt(1));
                     storeVisionBo.setAvailability(c.getInt(2));
-                    storeVisionBo.setOutofstock(c.getInt(3));
-
-
-
+                    storeVisionBo.setOutofstock(c.getInt(2)-c.getInt(1));
+                    Integer oos=c.getInt(2)-c.getInt(1);
+                    Log.d("oos", "loadCategorySmartVision: "+oos);
+                    Log.d("opportuniy   ", "loadCategorySmartVision: "+c.getInt(4));
+                    storeVisionBo.setOpportunity(oos*c.getInt(4));
                     availItems.add(storeVisionBo);
                 }
 
@@ -64,18 +67,26 @@ public class StoreVisionHelper {
         try {
 
             db.openDataBase();
-            String sql="select svp.pname, svp.FacingTarget,svp.count,(svp.FacingTarget-svp.count) as OutofStock from smartVisionProductMaster svp where svp.FacingTarget>0 ORDER BY svp.sequence";
+            String sql="select svp.pname, svp.FacingTarget,svp.count,(svp.FacingTarget-svp.count),svp.Opportunity as OutofStock from smartVisionProductMaster svp where svp.parentid !=0 ORDER BY svp.sequence";
             Cursor c = db.selectSQL(sql);
             Log.d("Store Vision Helper",c.getCount()+"");
+            sumOpportunity=0;
+            sumOos=0;
             while (c.moveToNext()){
                  StoreVisionBo storeVisionBo=new StoreVisionBo();
                  storeVisionBo.setSku(c.getString(0));
                 storeVisionBo.setNooffacing(c.getInt(1));
                 storeVisionBo.setAvailability(c.getInt(2));
-                storeVisionBo.setOutofstock(c.getInt(3));
-
-
-
+                int oosavaila=c.getInt(3);
+                Log.d("oosavaila", "loadSkuSmartVision: "+oosavaila);
+                if (c.getInt(3)>0){
+                    storeVisionBo.setOutofstock(c.getInt(3));
+                    sumOos=sumOos+c.getInt(3);
+                    sumOpportunity=sumOpportunity+c.getInt(3)*c.getInt(4);
+                }else {
+                    storeVisionBo.setOutofstock(0);
+                }
+                storeVisionBo.setOpportunity(c.getInt(4));
                 categorylist.add(storeVisionBo);
             }
 
@@ -111,7 +122,7 @@ public class StoreVisionHelper {
         ArrayList<StoreVisionBo> smartrecyclerview1=new ArrayList<>();
         try {
             db.openDataBase();
-            String sql="select svp.pname,svp.sosTarget,sv.opportunities,svp.AcctualTarget from SmartVision sv LEFT JOIN SmartVisionProductMaster svp where ParentID='0'";
+            String sql="select svp.pname,svp.sosTarget,svp.Opportunity,svp.AcctualTarget from SmartVisionProductMaster svp where ParentID='0' ORDER BY svp.sequence";
             Cursor c = db.selectSQL(sql);
             Log.d("Store Vision Helper",c.getCount()+"");
             while (c.moveToNext()){
@@ -206,7 +217,7 @@ public class StoreVisionHelper {
         try {
             db.openDataBase();
             adherence=jsonObject.getInt("score");
-            db.updateSQL("Update smartvisionProductMaster set compliance='" + jsonObject.get("score") + "'"+" WHERE pname ='Toblerone'");
+            db.updateSQL("Update smartvisionProductMaster set compliance='" + jsonObject.get("score") + "'"+" WHERE pCode ='fr'");
 //            db.updateSQL("UPDATE SmartVisionProductMaster set SosTarget=(SELECT(svp.length-svp.SosTarget) FROM SmartVision sv LEFT JOIN SmartVisionProductMaster svp) where ParentID='0'");
 //            db.updateSQL("Update SmartVisionProductMaster set AcctualTarget=(SELECT (sv.Opportunities-svp.SosTarget)From SmartVision sv LEFT JOIN SmartVisionProductMaster svp)where ParentID='0'");
             db.closeDB();

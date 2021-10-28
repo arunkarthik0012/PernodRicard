@@ -25,53 +25,107 @@
         app:cardBackgroundColor="@color/white"
         app:cardMaxElevation="3dp">
 
-        <TableLayout
+<!--        <TableLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+<!--            <TableRow>-->
+<!--                <TextView-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Brand"-->
+<!--                    android:gravity="center"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:padding="5sp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="70dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="SOS%"-->
+<!--                    android:gravity="center"-->
+<!--                    android:padding="3sp"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:textColor="@color/black"-->
+
+<!--                    />-->
+<!--                <TextView-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:padding="3sp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Target%"-->
+<!--                    android:textColor="@color/black"-->
+
+<!--                    />-->
+<!--                <TextView-->
+<!--                    android:layout_width="70dp"-->
+<!--                    android:padding="3sp"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Delta%"-->
+<!--                    android:textColor="@color/black"-->
+
+<!--                    />-->
+
+<!--            </TableRow>-->
+<!--        </TableLayout>-->
+        <LinearLayout
             android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="4"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:layout_height="wrap_content">
-            <TableRow>
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Brand"
-                    android:gravity="center"
-                    android:textSize="15sp"
-                    android:padding="5sp"
-                    android:textColor="@color/black"
-                    />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Brand"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:padding="3sp"
+                android:textColor="@color/black"
 
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:text="SOS%"
-                    android:gravity="center"
-                    android:padding="3sp"
-                    android:textSize="15sp"
-                    android:textColor="@color/black"
+                />
 
-                    />
-                <TextView
-                    android:layout_width="100dp"
-                    android:padding="3sp"
-                    android:gravity="center"
-                    android:textSize="15sp"
-                    android:layout_height="wrap_content"
-                    android:text="Target%"
-                    android:textColor="@color/black"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SOS%"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:gravity="center"
 
-                    />
-                <TextView
-                    android:layout_width="70dp"
-                    android:padding="3sp"
-                    android:textSize="15sp"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="Gap%"
-                    android:textColor="@color/black"
+                android:padding="3sp"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="3sp"
+                android:textSize="15sp"
+                android:gravity="center"
 
-                    />
+                android:layout_height="wrap_content"
+                android:text="Target%"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="3sp"
+                android:layout_height="wrap_content"
+                android:text="Delta%"
+                android:gravity="center"
 
-            </TableRow>
-        </TableLayout>
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
     <androidx.recyclerview.widget.RecyclerView
@@ -83,7 +137,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
@@ -95,48 +149,101 @@
         app:cardMaxElevation="3dp"
         android:layout_below="@+id/smart_shelf_recylerview">
 
-        <TableLayout
+<!--        <TableLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+<!--            <TableRow>-->
+<!--                <TextView-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Category"-->
+<!--                    android:layout_gravity=""-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:padding="3sp"-->
+<!--                    android:textColor="@color/black"-->
+
+<!--                    />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="70dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="SOS%"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:padding="3sp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    />-->
+<!--                <TextView-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:padding="3sp"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Target%"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    />-->
+<!--                <TextView-->
+<!--                    android:layout_width="70dp"-->
+<!--                    android:padding="3sp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Delta%"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    />-->
+
+<!--            </TableRow>-->
+<!--        </TableLayout>-->
+        <LinearLayout
             android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="4"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:layout_height="wrap_content">
-            <TableRow>
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="category"
-                    android:layout_gravity=""
-                    android:textSize="15sp"
-                    android:padding="3sp"
-                    android:textColor="@color/black"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Category"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:padding="3sp"
+                android:textColor="@color/black"
 
-                    />
+                />
 
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="wrap_content"
-                    android:text="SOS%"
-                    android:textSize="15sp"
-                    android:padding="3sp"
-                    android:textColor="@color/black"
-                    />
-                <TextView
-                    android:layout_width="100dp"
-                    android:padding="3sp"
-                    android:textSize="15sp"
-                    android:layout_height="wrap_content"
-                    android:text="Target%"
-                    android:textColor="@color/black"
-                    />
-                <TextView
-                    android:layout_width="70dp"
-                    android:padding="3sp"
-                    android:layout_height="wrap_content"
-                    android:text="Gap%"
-                    android:textSize="15sp"
-                    android:textColor="@color/black"
-                    />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SOS%"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:padding="3sp"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="3sp"
+                android:textSize="15sp"
+                android:gravity="center"
 
-            </TableRow>
-        </TableLayout>
+                android:layout_height="wrap_content"
+                android:text="Target%"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="3sp"
+                android:layout_height="wrap_content"
+                android:text="Delta%"
+                android:gravity="center"
+
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -149,6 +256,7 @@
             android:layout_height="wrap_content"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
+            android:visibility="gone"
             android:id="@+id/cardview_smart_3"
             android:layout_marginTop="5sp"
             android:layout_marginRight="10sp"
@@ -165,7 +273,7 @@
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:text="Planogram"
-                        android:layout_gravity=""
+                        android:layout_gravity="center"
                         android:textSize="15sp"
                         android:padding="3sp"
                         android:textColor="@color/black"
@@ -178,6 +286,7 @@
                         android:text="Adherence"
                         android:textSize="15sp"
                         android:padding="3sp"
+                        android:layout_gravity="center"
                         android:textColor="@color/black"
                         />
 
@@ -189,6 +298,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/plano_shelf_recylerview"
+            android:visibility="gone"
             android:layout_below="@id/cardview_smart_3"
             />
 

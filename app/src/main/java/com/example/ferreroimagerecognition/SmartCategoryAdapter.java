@@ -41,6 +41,9 @@ public class SmartCategoryAdapter extends RecyclerView.Adapter<SmartCategoryAdap
         viewHolder.textView4.setText(String.valueOf(storeVisionBolist.get(i).getGap()));
         Integer integer= Integer.parseInt(viewHolder.textView4.getText().toString());
         if (integer>0){
+            viewHolder.textView4.setText("0");
+        }
+        if (integer>0){
             viewHolder.textView4.setTextColor(ContextCompat.getColor(context,R.color.red_color));
         }
         else
