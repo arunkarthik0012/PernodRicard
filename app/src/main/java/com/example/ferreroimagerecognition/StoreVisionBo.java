@@ -4,6 +4,34 @@ public class StoreVisionBo {
     private String category,sku,Brand;
     private int outofstock;
     private int sos;
+    public int suggestedPrice;
+    public int actualPrice;
+
+    public int getSuggestedPrice() {
+        return suggestedPrice;
+    }
+
+    public void setSuggestedPrice(int suggestedPrice) {
+        this.suggestedPrice = suggestedPrice;
+    }
+
+    public int getActualPrice() {
+        return actualPrice;
+    }
+
+    public void setActualPrice(int actualPrice) {
+        this.actualPrice = actualPrice;
+    }
+
+    public int getVariance() {
+        return Variance;
+    }
+
+    public void setVariance(int variance) {
+        Variance = variance;
+    }
+
+    public int Variance;
 
     public int isScore() {
         return score;

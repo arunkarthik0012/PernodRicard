@@ -226,6 +226,34 @@ public class StoreVisionHelper {
             Commons.printException(e);
         }
     }
+
+    public ArrayList<StoreVisionBo> loadPriceCheckValues(){
+        ArrayList<StoreVisionBo> priceCheckrecyclerview=new ArrayList<>();
+        try {
+            db.openDataBase();
+            String sql="select svp.pname,svp.suggestedPrice,svp.ActualPrice,svp.Varaince from SmartVisionProductMaster svp";
+            Cursor c = db.selectSQL(sql);
+            Log.d("Store Vision Helper",c.getCount()+"");
+            while (c.moveToNext()){
+                StoreVisionBo storeVisionBo=new StoreVisionBo();
+                storeVisionBo.setSku(c.getString(0));
+//                storeVisionBo.setSuggestedPrice(c.getInt(1));
+//                storeVisionBo.setActualPrice(c.getInt(2));
+//                storeVisionBo.setVariance(c.getInt(3));
+
+
+                priceCheckrecyclerview.add(storeVisionBo);
+            }
+
+            c.close();
+            db.closeDB();
+
+        }catch (Exception e) {
+            Commons.printException(e);
+        }
+
+        return priceCheckrecyclerview;
+    }
     public void ResetDB(){
         try {
             db.openDataBase();

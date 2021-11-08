@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".PriceCheckFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <androidx.cardview.widget.CardView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:cardPreventCornerOverlap="true"
+           app:cardUseCompatPadding="true"
+           android:layout_marginTop="3sp"
+           android:id="@+id/cardview_price_1"
+           android:layout_marginLeft="10sp"
+           android:layout_marginRight="10sp"
+           app:cardBackgroundColor="@color/white"
+           app:cardMaxElevation="3dp">
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:orientation="horizontal"
+               android:weightSum="4"
+               android:gravity="center"
+               android:layout_gravity="center"
+               android:layout_height="wrap_content">
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="SKU"
+                   android:gravity="center"
+                   android:textSize="12sp"
+                   android:textStyle="bold"
+                   android:layout_weight="1"
+                   android:padding="3sp"
+                   android:textColor="@color/black"
+
+                   />
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Suggested Price"
+                   android:layout_weight="0.9"
+                   android:textSize="12sp"
+                   android:textStyle="bold"
+                   android:gravity="center"
+
+                   android:padding="3sp"
+                   android:textColor="@color/black"
+                   />
+               <TextView
+                   android:layout_width="match_parent"
+                   android:padding="3sp"
+                   android:textSize="12sp"
+                   android:textStyle="bold"
+                   android:gravity="center"
+                   android:layout_height="wrap_content"
+                   android:text="Actual Price"
+                   android:layout_weight="1"
+                   android:textColor="@color/black"
+                   />
+               <TextView
+                   android:layout_width="match_parent"
+                   android:padding="3sp"
+                   android:layout_height="wrap_content"
+                   android:text="Variance"
+                   android:gravity="center"
+android:textStyle="bold"
+                   android:textSize="12sp"
+                   android:layout_weight="1"
+                   android:textColor="@color/black"
+                   />
+
+           </LinearLayout>
+
+       </androidx.cardview.widget.CardView>
+       <androidx.recyclerview.widget.RecyclerView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@id/cardview_price_1"
+           android:id="@+id/price_check_recylerview"
+           />
+
+
+   </RelativeLayout>
+</ScrollView>

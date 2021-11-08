@@ -73,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         SelectionPageAdapter adapter=new SelectionPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new AvailabilityFragment(),"Facing Availability");
         adapter.addFragment(new SmartshelfFragment(),"SHELF SHARE");
+        adapter.addFragment(new PriceCheckFragment(),"Price Check");
+        
         viewPager.setAdapter(adapter);
     }
 

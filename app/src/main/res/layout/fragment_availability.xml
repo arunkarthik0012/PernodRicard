@@ -12,13 +12,15 @@
         android:layout_height="match_parent">
         <!-- TODO: Update blank fragment layout -->
 
+
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardview_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="3dp"
             android:layout_marginTop="3sp"
-            android:layout_marginRight="10sp"
+            android:layout_marginRight="3sp"
             app:cardBackgroundColor="@color/white"
             app:cardMaxElevation="3dp"
             app:cardPreventCornerOverlap="true"
@@ -76,61 +78,62 @@
                 android:layout_width="match_parent"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:weightSum="5"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="Category"
                     android:textSize="12sp"
-                    android:layout_weight="0.7"
                     android:gravity="center"
+                    android:textStyle="bold"
                     android:padding="3sp"
                     android:textColor="@color/black"
 
                     />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:text="Facing Target"
-                    android:layout_weight="1.1"
                     android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10sp"
                     android:padding="3sp"
-                    android:gravity="center"
                     android:textColor="@color/black"
 
                     />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:text="Facing Availability"
-                    android:layout_weight="1.1"
                     android:padding="3sp"
-                    android:gravity="center"
-
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10sp"
                     android:textSize="12sp"
                     android:textColor="@color/black"
 
                     />
+
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:text="Delta"
-                    android:layout_weight="1.1"
-                    android:padding="3sp"
-                    android:textSize="12sp"
+                    android:layout_marginLeft="5sp"
                     android:gravity="center"
+                    android:padding="3sp"
+                    android:textStyle="bold"
+                    android:text="Delta"
                     android:textColor="@color/black"
+                    android:textSize="12sp"
 
                     />
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="Opportunity"
-                    android:layout_weight="1"
                     android:padding="3sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5sp"
                     android:textSize="12sp"
                     android:gravity="center"
                     android:textColor="@color/black"
@@ -140,21 +143,23 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/availability_recylerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/cardview_1" />
-
+            android:layout_below="@+id/cardview_1"
+            android:layout_marginTop="10dp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardview_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/availability_recylerview"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="3dp"
             android:layout_marginTop="5sp"
-            android:layout_marginRight="10sp"
+            android:layout_marginRight="3sp"
             android:foregroundGravity="center_horizontal"
             app:cardBackgroundColor="@color/white"
             app:cardMaxElevation="3dp"
@@ -213,27 +218,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:weightSum="5">
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
                     android:gravity="center"
                     android:padding="3sp"
                     android:text="SKU"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="12sp"
 
                     />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.1"
                     android:gravity="center"
                     android:padding="3sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/sp10"
                     android:text="Facing Target"
                     android:textColor="@color/black"
                     android:textSize="12sp"
@@ -241,36 +246,38 @@
                     />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.1"
                     android:gravity="center"
                     android:padding="3sp"
+                    android:textStyle="bold"
                     android:text="Facing Availability"
-
+                    android:layout_marginLeft="@dimen/sp10"
                     android:textColor="@color/black"
                     android:textSize="12sp"
 
                     />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.1"
                     android:gravity="center"
                     android:padding="3sp"
+                    android:textStyle="bold"
                     android:text="Delta"
+                    android:layout_marginLeft="5sp"
                     android:textColor="@color/black"
                     android:textSize="12sp"
 
                     />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:gravity="center"
                     android:padding="3sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5sp"
                     android:text="Opportunity"
                     android:textColor="@color/black"
                     android:textSize="12sp"
@@ -278,6 +285,7 @@
                     />
 
             </LinearLayout>
+
 
         </androidx.cardview.widget.CardView>
 
@@ -287,6 +295,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/cardview_2" />
 
+
         <TextView
             android:id="@+id/picture"
             android:layout_width="match_parent"
@@ -295,6 +304,7 @@
             android:layout_marginLeft="10sp"
             android:layout_marginTop="10sp"
             android:padding="5sp"
+            android:textStyle="bold"
             android:text="Picture Quality"
             android:textColor="@color/black"
             android:textSize="18sp" />
@@ -417,6 +427,7 @@
             android:layout_marginTop="5sp"
             android:padding="5sp"
             android:text="Is Adhere"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -428,6 +439,7 @@
             android:layout_marginLeft="10sp"
             android:layout_marginTop="5sp"
             android:padding="5sp"
+            android:textStyle="bold"
             android:text="Planogram"
             android:textColor="@color/black"
             android:textSize="18sp" />
@@ -507,7 +519,6 @@
 
 
         </LinearLayout>
-
 
     </RelativeLayout>
 </ScrollView>
