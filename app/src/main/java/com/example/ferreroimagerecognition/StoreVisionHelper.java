@@ -37,7 +37,7 @@ public class StoreVisionHelper {
         try {
             db.openDataBase();
 
-            String sql="select sv.category,sum(svp.FacingTarget) as facing, sum(svp.count) as Availabity, sv.OutofStock,sum(svp.Opportunity) as oppprotunities from smartvision sv LEFT JOIN SmartVisionProductMaster svp WHERE svp.parentid = 18";
+            String sql="select sv.category,sum(svp.FacingTarget) as facing, sum(svp.count) as Availabity, sv.OutofStock,sum(svp.Opportunity) as oppprotunities from smartvision sv LEFT JOIN SmartVisionProductMaster svp WHERE svp.parentid = 19";
             Cursor c = db.selectSQL(sql);
             Log.d("Store Vision Helper",c.getCount()+"");
                 while (c.moveToNext()){
@@ -107,8 +107,22 @@ public class StoreVisionHelper {
             for (int i=0;i<jsonObject.length();i++) {
                 db.updateSQL("UPDATE SmartVisionProductMaster SET count= '" + jsonObject.get("count") + "'"+" WHERE pCode = '" + jsonObject.get("id").toString() + "'" +" AND parentid != 0" );
                 db.updateSQL("UPDATE SmartVision set outofstock=(SELECT sum(svp.FacingTarget-svp.count) FROM SmartVisionProductMaster svp), nooffacing=(SELECT sum(svp.FacingTarget) FROM SmartVisionProductMaster svp)");
-
             }
+            db.closeDB();
+
+        }catch (Exception e) {
+            Commons.printException(e);
+        }
+
+    }
+    public void UpdatePricecheck(JSONObject jsonObject){
+
+
+        try {
+//            double varance=jsonObject.getString("reference_price")-jsonObject.getString("current_price");
+
+                    db.openDataBase();
+            db.updateSQL("UPDATE SmartVisionProductMaster SET SuggestedPrice='"+jsonObject.getString("reference_price")+"',"+"ActualPrice='"+jsonObject.getString("current_price")+"',"+"Varaince='"+"0"+"' "+" WHERE pCode = '"+jsonObject.getString("id")+"' "+" AND parentid != 0" );
             db.closeDB();
 
         }catch (Exception e) {
@@ -164,7 +178,7 @@ public class StoreVisionHelper {
         ArrayList<StoreVisionBo> smartcategorylist=new ArrayList<>();
         try {
             db.openDataBase();
-            String sql="select category,svp.SOsTarget,opportunities ,svp.AcctualTarget from SmartVision LEFT JOIN SmartVisionProductMaster svp where ParentID='0' AND pCode='fr'";
+            String sql="select category,svp.SOsTarget,opportunities ,svp.AcctualTarget from SmartVision LEFT JOIN SmartVisionProductMaster svp where ParentID='0' AND pCode='pr'";
             Cursor c = db.selectSQL(sql);
             Log.d("Store Vision Helper",c.getCount()+"");
             while (c.moveToNext()){
@@ -237,9 +251,9 @@ public class StoreVisionHelper {
             while (c.moveToNext()){
                 StoreVisionBo storeVisionBo=new StoreVisionBo();
                 storeVisionBo.setSku(c.getString(0));
-//                storeVisionBo.setSuggestedPrice(c.getInt(1));
-//                storeVisionBo.setActualPrice(c.getInt(2));
-//                storeVisionBo.setVariance(c.getInt(3));
+                storeVisionBo.setSuggestedPrice(c.getInt(1));
+                storeVisionBo.setActualPrice(c.getInt(2));
+                storeVisionBo.setVariance(c.getInt(3));
 
 
                 priceCheckrecyclerview.add(storeVisionBo);

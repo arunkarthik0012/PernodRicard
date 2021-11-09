@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     public  static int sumOpportunity=0;
     public  static int sumOos=0;
 
+    String orientation="horizontal";
+
 
 
     @Override
@@ -47,6 +49,19 @@ public class MainActivity extends AppCompatActivity {
         setupViewPager(mviewPager);
         TabLayout tabLayout=findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mviewPager);
+
+        mviewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            public void onPageScrollStateChanged(int state) {}
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            public void onPageSelected(int position) {
+                if (position==2){
+                    orientation="vertical";
+                }else {
+                     orientation="horizontal";
+                }
+            }
+        });
 
         Toolbar toolbar = findViewById(R.id.toolbar);
 
@@ -110,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 storeVisionHelper.ResetDB();
                 Intent intent=new Intent(MainActivity.this,IvyIRActivity.class);
+                intent.putExtra("orientation",orientation);
                 startActivity(intent);
                 finish();
             }

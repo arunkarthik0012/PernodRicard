@@ -38,8 +38,8 @@ public class PriceCheckAdapter extends RecyclerView.Adapter<PriceCheckAdapter.Vi
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         holder.textView1.setText(storeVisionBolist.get(position).getSku());
         holder.textView2.setText(String.valueOf(storeVisionBolist.get(position).getSuggestedPrice()));
-        holder.textView4.setText(String.valueOf(storeVisionBolist.get(position).getActualPrice()));
-        holder.textView3.setText(String.valueOf(storeVisionBolist.get(position).getVariance()));
+        holder.textView4.setText(String.valueOf(storeVisionBolist.get(position).getSuggestedPrice()-storeVisionBolist.get(position).getActualPrice()));
+        holder.textView3.setText(String.valueOf(storeVisionBolist.get(position).getActualPrice()));
 
     }
 

@@ -20,12 +20,11 @@ import com.sukshi.inventorymanagementlib.SukshiError
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
-import java.net.URI
-import java.security.AccessController.getContext
 
 class IvyIRActivity : AppCompatActivity() {
 
     lateinit var storevisionhelper: StoreVisionHelper
+    var orientation:String = "horizontal"
 
 
     companion object {
@@ -55,6 +54,8 @@ class IvyIRActivity : AppCompatActivity() {
         setContentView(R.layout.activity_ivy_iractivity)
 
         storevisionhelper = StoreVisionHelper(this.applicationContext)
+        orientation= intent.extras!!.getString("orientation").toString()
+
         rootGridLayout = findViewById<GridLayout>(R.id.root_grid);
         enableDisableImageButtons()
         val sukshiNetworkHelper = SukshiNetworkHelper(this)
@@ -78,7 +79,7 @@ class IvyIRActivity : AppCompatActivity() {
 
         if (allPermissionsGranted()) {
 
-           /* var  json:String= """{
+            /*var  json:String= """{
     "details": [
         {
             "tag": "",
@@ -87,7 +88,9 @@ class IvyIRActivity : AppCompatActivity() {
                 "message": ""
             },
             "price_check": {
-                "id": "",
+                "id": "fw", 
+                "reference_price": "23",
+                "current_price": "21",
                 "message": ""
             },
             "products": [{"id":"fr","count":"25"},{"id":"kjp","count":"1"},{"id":"ttr","count":"1"},{"id":"npb","count":"1"}],
@@ -127,7 +130,7 @@ class IvyIRActivity : AppCompatActivity() {
 
     fun startCamera() {
         var params = JSONObject();
-        params.put("aspect_ratio", "horizontal") //string “vertical” for featuretype Price Check, remaining
+        params.put("aspect_ratio", orientation) //string “vertical” for featuretype Price Check, remaining
         params.put("shouldShowReviewScreen", true); // boolean
         params.put("shouldSetPadding", true); // boolean
         params.put("padding", 0.05); // double value
@@ -382,7 +385,9 @@ class IvyIRActivity : AppCompatActivity() {
                             if (price_checkObj != null) {
                                 if (price_checkObj.has("id")) {
                                     Log.d("IRActivity", price_checkObj.getString("id"))
-
+                                    if (orientation=="vertical"){
+                                        storevisionhelper.UpdatePricecheck(price_checkObj)
+                                    }
                                 }
                                 if (price_checkObj.has("message")) {
                                     Log.d("IRActivity", price_checkObj.getString("message"))
@@ -507,6 +512,9 @@ class IvyIRActivity : AppCompatActivity() {
                             if (price_checkObj != null) {
                                 if (price_checkObj.has("id")) {
                                     Log.d("IRActivity", price_checkObj.getString("id"))
+                                    if (orientation=="vertical"){
+                                        storevisionhelper.UpdatePricecheck(price_checkObj)
+                                    }
 
                                 }
                                 if (price_checkObj.has("message")) {
@@ -629,7 +637,9 @@ class IvyIRActivity : AppCompatActivity() {
                             if (price_checkObj != null) {
                                 if (price_checkObj.has("id")) {
                                     Log.d("IRActivity", price_checkObj.getString("id"))
-
+                                    if (orientation=="vertical"){
+                                        storevisionhelper.UpdatePricecheck(price_checkObj)
+                                    }
                                 }
                                 if (price_checkObj.has("message")) {
                                     Log.d("IRActivity", price_checkObj.getString("message"))
