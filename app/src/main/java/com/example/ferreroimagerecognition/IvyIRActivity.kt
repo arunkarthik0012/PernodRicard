@@ -59,7 +59,7 @@ class IvyIRActivity : AppCompatActivity() {
         rootGridLayout = findViewById<GridLayout>(R.id.root_grid);
         enableDisableImageButtons()
         val sukshiNetworkHelper = SukshiNetworkHelper(this)
-        sukshiNetworkHelper.initSDK(this, "ivy_ferrero") { message, isSuccess ->
+        sukshiNetworkHelper.initSDK(this, "ivy_pr") { message, isSuccess ->
             //Note: proceed with your flow
             Log.d("IVYIRActivity", "message {$message} -->{$isSuccess}")
         }
@@ -151,7 +151,7 @@ class IvyIRActivity : AppCompatActivity() {
     fun uploadFile(responseJson: JSONObject?) {
         val params = JSONObject()
         val header = JSONObject()
-        params.put("app_id", "ivy_ferrero") //string
+        params.put("app_id", "ivy_pr") //string
         /*
         switch (featuretype) {
     case "Availability & Count":
@@ -197,7 +197,7 @@ class IvyIRActivity : AppCompatActivity() {
     fun uploadFileForSOS(responseJson: JSONObject?) {
         val params = JSONObject()
         val header = JSONObject()
-        params.put("app_id", "ivy_ferrero") //string
+        params.put("app_id", "ivy_pr") //string
         /*
         switch (featuretype) {
     case "Availability & Count":
@@ -233,7 +233,7 @@ class IvyIRActivity : AppCompatActivity() {
                     progressDialog.dismiss()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
-                    Log.d("IRActivity", "Success:" + result.toString())
+                    Log.d("IRActivity SOS", "Success:" + result.toString())
 
                 } else {
                     //Handle error
@@ -247,7 +247,7 @@ class IvyIRActivity : AppCompatActivity() {
     fun uploadFileForCompliance(responseJson: JSONObject?) {
         val params = JSONObject()
         val header = JSONObject()
-        params.put("app_id", "ivy_ferrero") //string
+        params.put("app_id", "ivy_pr") //string
         /*
         switch (featuretype) {
     case "Availability & Count":
@@ -281,7 +281,7 @@ class IvyIRActivity : AppCompatActivity() {
                     progressDialog.dismiss()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
-                    Log.d("IRActivity", "Success:" + result.toString())
+                    Log.d("IRActivity COmpliance", "Success:" + result.toString())
 
                 } else {
                     //Handle error
